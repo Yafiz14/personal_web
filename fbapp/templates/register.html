@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Portfolio</title>
+    <link rel='stylesheet' href="{% static 'css/register.css' %}">
+    
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Register Form -->
+    <div class="register-wrapper">
+        <div class="register-container">
+            <h2>Create Account</h2>
+            <p class="subtitle">Join us and start your journey</p>
+            
+            <form id="registerForm"  method="POST">
+                 {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="Username" placeholder="Choose a username" required>
+                    <div class="error-message" id="usernameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="Email" placeholder="your.email@example.com" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" id="password" name="Password" placeholder="Create a strong password" required>
+                    <div class="password-strength">
+                        <div class="password-strength-bar" id="strengthBar"></div>
+                    </div>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="ConfirmPassword" placeholder="Re-enter your password" required>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="tel" id="mobile" name="Mobile" placeholder="+1 (555) 123-4567" required>
+                    <div class="error-message" id="mobileError"></div>
+                </div>
+                  <p>{% if error %} 
+                    <span style="color:red;">{{ error }}</span>
+                     {% endif %}
+                    </p>
+                <button type="submit" class="register-btn">Create Account</button>
+            </form>
+
+            <div class="login-link">
+                Already have an account? <a href={% url 'index'%}>Login here</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        ✓ Registration Successful!
+    </div>
+  <script src="{% static 'js/register.js' %}"></script>
+</body>
+</html>
