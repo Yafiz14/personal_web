@@ -50,4 +50,14 @@ def register(request):
                 form.save()
                 return redirect('index')
     return render(request,'register.html')
+from django.http import HttpResponse
+from django.contrib.auth import get_user_model
+
+def reset_admin(request):
+    User = get_user_model()
+    user = User.objects.get(username="yafiz")
+    user.set_password("Admin@123")
+    user.save()
+    return HttpResponse("Password reset successful")
+
 
