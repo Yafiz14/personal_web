@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Portfolio</title>
     <link rel='stylesheet' href="{% static 'css/register.css' %}">
-    
+
 </head>
 <body>
 
@@ -18,9 +18,9 @@
         <div class="register-container">
             <h2>Create Account</h2>
             <p class="subtitle">Join us and start your journey</p>
-            
+
             <form id="registerForm"  method="POST">
-                 {% csrf_token %}
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="Username" placeholder="Choose a username" required>
@@ -53,10 +53,10 @@
                     <input type="tel" id="mobile" name="Mobile" placeholder="+1 (555) 123-4567" required>
                     <div class="error-message" id="mobileError"></div>
                 </div>
-                  <p>{% if error %} 
+                <p>{% if error %}
                     <span style="color:red;">{{ error }}</span>
-                     {% endif %}
-                    </p>
+                    {% endif %}
+                </p>
                 <button type="submit" class="register-btn">Create Account</button>
             </form>
 
@@ -70,6 +70,6 @@
     <div class="success-message" id="successMessage">
         ✓ Registration Successful!
     </div>
-  <script src="{% static 'js/register.js' %}"></script>
+    <script src="{% static 'js/register.js' %}"></script>
 </body>
 </html>

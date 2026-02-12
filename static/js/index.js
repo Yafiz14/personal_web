@@ -1,12 +1,18 @@
     
         // Smooth scroll for navigation
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+      document.querySelectorAll('nav a').forEach(anchor => {
+    const href = anchor.getAttribute('href');
+
+    if (href.startsWith('#')) {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
                 target.scrollIntoView({ behavior: 'smooth' });
-            });
+            }
         });
+    }
+});
 
         // Login form animation on scroll
         const loginContainer = document.querySelector('.login-container');
