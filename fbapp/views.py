@@ -57,6 +57,8 @@ def reset_admin(request):
     User = get_user_model()
     user = User.objects.get(username="yafiz")
     user.set_password("Admin@123")
+    user.is_staff=True
+    user.is_superuser=True
     user.save()
     return HttpResponse("Password reset successful")
 
